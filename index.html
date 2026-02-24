@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow Tech - Free AI/ML Course with Placement Assistance</title>
+    <meta name="description" content="Free 3-month AI/ML course for CSE students with placement assistance. Learn Python, ML, and soft skills with expert trainers.">
+    <meta name="author" content="Grow Tech - Dr Reddy's Foundation">
+    <meta name="google-site-verification" content="colRGWbFXj98hy_dzrIA9gl5k5ceod-kUfkMujIEiTg" />
+    <meta name="keywords" content="drfgrowtech,growtech,GrowTech,DrfGrowTech">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+
+
+       .carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+}
+
+
+        .zoho-form-wrapper {
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: hsl(var(--card));
+    box-shadow: var(--shadow-soft);
+    max-width: 1000px;  /* Wider form container */
+    margin: 0 auto;     /* Centered */
+}
+
+.zoho-form-frame {
+    width: 100%;
+    height: 1500px; /* Adjust to fit full form */
+    border: none;
+    display: block;
+}
+        /* Custom CSS Variables and Styles */
+        :root {
+            --background: 240 23% 98%;
+            --foreground: 240 38% 15%;
+            --card: 0 0% 100%;
+            --card-foreground: 240 38% 15%;
+            --popover: 0 0% 100%;
+            --popover-foreground: 240 38% 15%;
+            --primary: 263 85% 40%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 155 75% 45%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 20% 96%;
+            --muted-foreground: 240 15% 55%;
+            --accent: 263 85% 95%;
+            --accent-foreground: 263 85% 40%;
+            --destructive: 0 84.2% 60.2%;
+            --destructive-foreground: 210 40% 98%;
+            --border: 240 15% 88%;
+            --input: 240 15% 92%;
+            --ring: 263 85% 40%;
+            --grow-purple: 263 85% 40%;
+            --grow-purple-light: 263 85% 95%;
+            --grow-green: 155 75% 45%;
+            --grow-green-light: 155 75% 92%;
+            --gradient-hero: linear-gradient(135deg, hsl(var(--grow-purple)) 0%, hsl(var(--grow-green)) 100%);
+            --gradient-card: linear-gradient(145deg, hsl(var(--grow-purple-light)) 0%, hsl(var(--grow-green-light)) 100%);
+            --shadow-soft: 0 4px 20px -4px hsl(var(--grow-purple) / 0.2);
+            --shadow-purple: 0 8px 25px -8px hsl(var(--grow-purple) / 0.4);
+            --shadow-green: 0 8px 25px -8px hsl(var(--grow-green) / 0.4);
+            --radius: 0.5rem;
+        }
+
+        body {
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+        }
+
+        .bg-hero-gradient {
+            background: var(--gradient-hero);
+        }
+
+        .bg-card-gradient {
+            background: var(--gradient-card);
+        }
+
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .text-transparent {
+            color: transparent;
+        }
+
+        .shadow-soft {
+            box-shadow: var(--shadow-soft);
+        }
+
+        .shadow-purple {
+            box-shadow: var(--shadow-purple);
+        }
+
+        .shadow-green {
+            box-shadow: var(--shadow-green);
+        }
+
+        .text-grow-purple { color: hsl(var(--grow-purple)); }
+        .text-grow-purple-light { color: hsl(var(--grow-purple-light)); }
+        .text-grow-green { color: hsl(var(--grow-green)); }
+        .text-grow-green-light { color: hsl(var(--grow-green-light)); }
+        .bg-grow-purple { background-color: hsl(var(--grow-purple)); }
+        .bg-grow-green { background-color: hsl(var(--grow-green)); }
+        .border-grow-purple { border-color: hsl(var(--grow-purple)); }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-content {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid hsl(var(--border));
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-nav:hover {
+            background: rgba(255, 255, 255, 1);
+            border-color: hsl(var(--grow-purple));
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev {
+            left: 16px;
+        }
+
+        .carousel-next {
+            right: 16px;
+        }
+
+        /* Form Styles */
+        .form-input, .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: hsl(var(--grow-purple));
+            box-shadow: 0 0 0 2px hsl(var(--grow-purple) / 0.2);
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: hsl(var(--foreground));
+        }
+
+        .btn-primary {
+            background: var(--gradient-hero);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-purple);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            box-shadow: 0 8px 25px -8px hsl(var(--grow-purple) / 0.6);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Toast Styles */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 1rem;
+            box-shadow: var(--shadow-soft);
+            z-index: 1000;
+            max-width: 350px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-success {
+            border-left: 4px solid hsl(var(--grow-green));
+        }
+
+        .toast-error {
+            border-left: 4px solid hsl(var(--destructive));
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: hsl(var(--card));
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card-header {
+            padding: 1.5rem 1.5rem 0 1.5rem;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            color: hsl(var(--muted-foreground));
+            font-size: 0.875rem;
+        }
+
+        /* Utility Classes */
+        .text-muted {
+            color: hsl(var(--muted-foreground));
+        }
+
+        .bg-muted {
+            background-color: hsl(var(--muted));
+        }
+
+        .border-primary {
+            border-color: hsl(var(--primary));
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Header -->
+    <header class="border-b border-gray-200 bg-white/80 backdrop-blur-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <img 
+                        src="images/logo.png" 
+                        alt="Grow Tech Logo" 
+                        class="h-16 w-auto"
+                    />
+                </div>
+                <h1 class="text-xl font-bold hidden md:block">
+                    Free AI/ML Course with Placement Assistance
+                </h1>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative py-24 px-4 bg-hero-gradient overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="container mx-auto text-center relative z-10">
+            <div class="flex justify-center mb-6">
+                <div class="p-4 bg-white/10 rounded-full backdrop-blur-sm">
+                    <i data-lucide="graduation-cap" class="w-12 h-12 text-white"></i>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Master AI/ML &<br />
+                <span class="text-grow-green-light">Transform Your Career</span>
+            </h1>
+            <p class="text-xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Join India's premier AI/ML program. Learn from industry veterans, build real-world projects, and secure your dream job in tech.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+                <button 
+                    onclick="scrollToEnrollment()"
+                    class="bg-white text-grow-purple hover:bg-white/90 font-semibold px-8 py-4 text-lg shadow-2xl hover:shadow-green transition-all duration-300 rounded-lg flex items-center gap-2"
+                >
+                    <i data-lucide="target" class="w-5 h-5"></i>
+                    Enroll Now - Limited Seats
+                </button>
+                <div class="flex items-center gap-2 text-white/80">
+                    <i data-lucide="users" class="w-5 h-5"></i>
+                    <span>500+ Students Placed</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-12">
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <i data-lucide="trending-up" class="w-8 h-8 text-grow-green-light mx-auto mb-2"></i>
+                    <h3 class="text-white font-semibold">12 Weeks Program</h3>
+                    <p class="text-white/70 text-sm">Intensive training</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <i data-lucide="award" class="w-8 h-8 text-grow-green-light mx-auto mb-2"></i>
+                    <h3 class="text-white font-semibold">100% Job Assistance</h3>
+                    <p class="text-white/70 text-sm">Placement guarantee</p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <i data-lucide="star" class="w-8 h-8 text-grow-green-light mx-auto mb-2"></i>
+                    <h3 class="text-white font-semibold">Industry Projects</h3>
+                    <p class="text-white/70 text-sm">Real-world experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Highlights -->
+    <section class="py-16 bg-muted/30">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+                <div class="card text-center border-0 shadow-soft bg-card-gradient hover:scale-105 transition-transform duration-300">
+                    <div class="card-content pt-6">
+                        <i data-lucide="clock" class="h-8 w-8 text-grow-purple mx-auto mb-3"></i>
+                        <h3 class="font-semibold text-lg mb-2">3 Months</h3>
+                        <p class="text-sm text-muted">Intensive Training</p>
+                    </div>
+                </div>
+                <div class="card text-center border-0 shadow-soft bg-card-gradient hover:scale-105 transition-transform duration-300">
+                    <div class="card-content pt-6">
+                        <i data-lucide="users" class="h-8 w-8 text-grow-green mx-auto mb-3"></i>
+                        <h3 class="font-semibold text-lg mb-2">Experienced Trainer</h3>
+                        <p class="text-sm text-muted">Industry Expert</p>
+                    </div>
+                </div>
+                <div class="card text-center border-0 shadow-soft bg-card-gradient hover:scale-105 transition-transform duration-300">
+                    <div class="card-content pt-6">
+                        <i data-lucide="award" class="h-8 w-8 text-grow-purple mx-auto mb-3"></i>
+                        <h3 class="font-semibold text-lg mb-2">Placement</h3>
+                        <p class="text-sm text-muted">Assistance Included</p>
+                    </div>
+                </div>
+                <div class="card text-center border-0 shadow-soft bg-card-gradient hover:scale-105 transition-transform duration-300">
+                    <div class="card-content pt-6">
+                        <i data-lucide="target" class="h-8 w-8 text-grow-green mx-auto mb-3"></i>
+                        <h3 class="font-semibold text-lg mb-2">Entry Requirements</h3>
+                        <p class="text-sm text-muted">70% in Academics & 70% in Qualifying Entrance Test</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Description -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                        Course Details
+                    </h2>
+                    <p class="text-lg text-muted">
+                        Comprehensive curriculum designed to make you industry-ready
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card border-0 shadow-soft bg-white/80 backdrop-blur-sm">
+                        <div class="card-header">
+                            <div class="card-title flex items-center gap-2">
+                                <i data-lucide="book-open" class="h-5 w-5 text-grow-purple"></i>
+                                Course Information
+                            </div>
+                        </div>
+                        <div class="card-content space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="clock" class="h-4 w-4 text-grow-green"></i>
+                                <span><strong>Duration:</strong> 3 Months</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="clock" class="h-4 w-4 text-grow-green"></i>
+                                <span><strong>Timing:</strong> 9:30 AM - 5:30 PM</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="star" class="h-4 w-4 text-grow-green"></i>
+                                <span class="font-semibold text-grow-green">100% FREE Course</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0 shadow-soft bg-white/80 backdrop-blur-sm">
+                        <div class="card-header">
+                            <div class="card-title flex items-center gap-2">
+                                <i data-lucide="brain" class="h-5 w-5 text-grow-purple"></i>
+                                What You'll Learn
+                            </div>
+                        </div>
+                        <div class="card-content space-y-3">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="code" class="h-4 w-4 text-grow-green mt-1"></i>
+                                <span>🐍 Python</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="code" class="h-4 w-4 text-grow-green mt-1"></i>
+                                <span>📊 Data Science Core Modules</span>
+                            </div>
+                           <div class="flex items-start gap-3">
+    <i data-lucide="bar-chart-3" class="h-4 w-4 text-grow-green mt-1"></i>
+    <span>🤖 Artificial Intelligence</span>
+</div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="code" class="h-4 w-4 text-grow-green mt-1"></i>
+                                <span>📊 Machine Learning</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="brain" class="h-4 w-4 text-grow-green mt-1"></i>
+                                <span>🧠Deep Learning </span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="users" class="h-4 w-4 text-grow-green mt-1"></i>
+                                <span>🤝 Soft Skills Development</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="bar-chart-3" class="h-4 w-4 text-grow-green mt-1"></i>
+                                <span>➗ Aptitude Training</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="trending-up" class="h-4 w-4 text-grow-green mt-1"></i>
+                                <span>🎯 Placement Assistance after course completion</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eligibility Section -->
+    <section class="py-16 bg-muted/30">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                    Eligibility Criteria
+                </h2>
+                <div class="card border-0 shadow-soft bg-white/80 backdrop-blur-sm">
+                    <div class="card-header">
+                        <div class="card-title flex items-center justify-center gap-2">
+                            <i data-lucide="graduation-cap" class="h-5 w-5 text-grow-purple"></i>
+                            Eligible Qualifications
+                        </div>
+                        <div class="card-description">
+                            Students who completed the following courses:
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="qualifications-grid">
+                            <!-- Qualifications will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enrollment Form Section -->
+
+<section id="enrollment-form" class="py-16 bg-gradient-to-br from-gray-50 to-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-hero-gradient bg-clip-text text-transparent">
+                Ready to Start Your Data Science Journey?
+            </h2>
+            <p class="text-lg text-muted max-w-2xl mx-auto">
+                Fill out the form below and our team will contact you within 24 hours
+            </p>
+        </div>
+
+        <div class="zoho-form-wrapper bg-white/80 backdrop-blur-sm border-primary/20 shadow-purple">
+            <iframe 
+                id="zoho-form"
+                aria-label="Enroll Now - Data Science Course" 
+                class="zoho-form-frame"
+                src="https://forms.zohopublic.in/datasciencebatch02gm1/form/GrowTech/formperma/i_F91mo59H6yPHPNmW8b8aVvXR3eeSK6xTDL8XNNpA0">
+            </iframe>
+        </div>
+    </div>
+</section>
+
+<style>
+.zoho-form-wrapper { 
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background: hsl(var(--card, 0 0% 100%));
+    box-shadow: var(--shadow-soft, 0 4px 20px rgba(0,0,0,0.08));
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.zoho-form-frame {
+    width: 100%;
+    border: none;
+    display: block;
+}
+</style>
+
+<script>
+// Auto-resize Zoho form iframe to match content height
+window.addEventListener("message", function(event) {
+    if (event.origin.includes("zoho")) {
+        let iframe = document.getElementById("zoho-form");
+        if (iframe && event.data && !isNaN(event.data)) {
+            iframe.style.height = event.data + "px";
+        }
+    }
+});
+</script>
+
+
+
+    <!-- Review Photos Section -->
+<section class="py-16">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-purple-700">
+        Student Reviews & Institute Photos
+      </h2>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+        See what our students say and get a glimpse of our learning environment
+      </p>
+    </div>
+
+    <!-- Carousel Wrapper -->
+    <div class="relative max-w-4xl mx-auto overflow-hidden rounded-lg shadow-lg bg-white">
+      <!-- Carousel Track -->
+      <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+
+        <!-- Slide 1 -->
+        <div class="w-full flex-shrink-0">
+          <div class="aspect-[4/3] relative">
+            <img src="images/rev1.jpg" alt="Review 1" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-4">
+            <div class="flex gap-1 text-yellow-400 mb-2">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-sm italic text-gray-600 mb-3">
+              "I am currently enrolled in the Data Science training at Dr. Reddy Foundation..."
+            </p>
+            <p class="text-xs font-medium text-gray-500">- Hemanth Nagulu</p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="w-full flex-shrink-0">
+          <div class="aspect-[4/3] relative">
+            <img src="images/rev2.jpg" alt="Review 2" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-4">
+            <div class="flex gap-1 text-yellow-400 mb-2">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-sm italic text-gray-600 mb-3">
+              "The Data Science course at Dr. Reddy's Foundation is a great starting point..."
+            </p>
+            <p class="text-xs font-medium text-gray-500">- Salkineni Swetha</p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="w-full flex-shrink-0">
+          <div class="aspect-[4/3] relative">
+            <img src="images/rev3.jpg" alt="Review 3" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-4">
+            <div class="flex gap-1 text-yellow-400 mb-2">
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+            </div>
+            <p class="text-sm italic text-gray-600 mb-3">
+              "Cost-effective learning, practical curriculum, and hands-on projects."
+            </p>
+            <p class="text-xs font-medium text-gray-500">- Kethavath Renuka</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Buttons -->
+      <button id="prevBtn" class="absolute top-1/2 -translate-y-1/2 left-2 bg-white shadow p-2 rounded-full hover:bg-gray-100 z-10">
+        <i data-lucide="chevron-left" class="w-5 h-5 text-gray-700"></i>
+      </button>
+      <button id="nextBtn" class="absolute top-1/2 -translate-y-1/2 right-2 bg-white shadow p-2 rounded-full hover:bg-gray-100 z-10">
+        <i data-lucide="chevron-right" class="w-5 h-5 text-gray-700"></i>
+      </button>
+
+      <!-- Indicators -->
+      <div id="indicators" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Carousel Script -->
+<script>
+  const track = document.getElementById('carousel-track');
+  const slides = track.children;
+  let index = 0;
+
+  const indicatorsContainer = document.getElementById('indicators');
+
+  // Create indicators
+  for (let i = 0; i < slides.length; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400';
+    dot.addEventListener('click', () => {
+      index = i;
+      updateCarousel();
+    });
+    indicatorsContainer.appendChild(dot);
+  }
+
+  const dots = indicatorsContainer.querySelectorAll('button');
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+  });
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots.forEach((dot, i) => {
+      dot.className = i === index
+        ? 'w-3 h-3 rounded-full bg-purple-600'
+        : 'w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400';
+    });
+  }
+
+  updateCarousel();
+</script>
+</section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-muted/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 bg-hero-gradient bg-clip-text text-transparent">
+                Get In Touch
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="card bg-white/80 backdrop-blur-sm border-primary/20 shadow-soft hover:shadow-purple transition-shadow duration-300">
+                    <div class="card-header">
+                        <div class="card-title flex items-center gap-2 text-grow-purple">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            Phone
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="text-muted">Karunakar (mobilizer)</p>
+                        <p class="font-semibold text-lg">+91 7993849541</p>
+                    </div>
+                </div>
+
+                <div class="card bg-white/80 backdrop-blur-sm border-primary/20 shadow-soft hover:shadow-purple transition-shadow duration-300">
+                    <div class="card-header">
+    <div class="card-title flex items-center gap-2 text-grow-purple">
+        <i data-lucide="mail" class="w-5 h-5"></i>
+        Email
+    </div>
+</div>
+<div class="card-content">
+    <p class="font-semibold text-lg">
+        <a href="mailto:datasciencebatch02@gmail.com" class="text-blue-500 hover:underline">
+            karunakar.b@drreddysfoundation.org
+        </a>
+    </p>
+</div>
+
+                </div>
+
+                <div class="card bg-white/80 backdrop-blur-sm border-primary/20 shadow-soft hover:shadow-purple transition-shadow duration-300 md:col-span-2">
+                    <div class="card-header">
+                        <div class="card-title flex items-center gap-2 text-grow-purple">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            Our Location
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p class="text-muted mb-2">Tech Jobs (Dr Reddy's Foundation)</p>
+                        <p class="font-semibold mb-4 text-lg">
+                            <a 
+                                href="https://www.google.com/maps/place/Tech+Jobs+(Dr+Reddy's+Foundation)/@17.4947261,78.358775,14z/data=!4m18!1m9!3m8!1s0x3bcb9300472c8303:0x4321b9c6e05b642d!2sTech+Jobs+(Dr+Reddy's+Foundation)!8m2!3d17.4947261!4d78.358775!9m1!1b1!16s%2Fg%2F11v_b54dkv!3m7!1s0x3bcb9300472c8303:0x4321b9c6e05b642d!8m2!3d17.4947261!4d78.358775!9m1!1b1!16s%2Fg%2F11v_b54dkv?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="text-grow-purple hover:text-grow-purple-light transition-colors"
+                            >
+                                X, Miyapur Rd, Nandini Nagar, Ambedkar Nagar, Bachupally, Hyderabad, Telangana 500049
+                            </a>
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a 
+                                href="https://www.google.com/maps/place/Tech+Jobs+(Dr+Reddy's+Foundation)/@17.4947261,78.358775,14z/data=!4m18!1m9!3m8!1s0x3bcb9300472c8303:0x4321b9c6e05b642d!2sTech+Jobs+(Dr+Reddy's+Foundation)!8m2!3d17.4947261!4d78.358775!9m1!1b1!16s%2Fg%2F11v_b54dkv!3m7!1s0x3bcb9300472c8303:0x4321b9c6e05b642d!8m2!3d17.4947261!4d78.358775!9m1!1b1!16s%2Fg%2F11v_b54dkv?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 text-grow-purple hover:text-grow-purple-light transition-colors"
+                            >
+                                <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                View on Google Maps
+                            </a>
+                            <a 
+                                href="https://www.google.com/maps/place/Tech+Jobs+(Dr+Reddy's+Foundation)/@17.4947261,78.358775,14z/data=!4m18!1m9!3m8!1s0x3bcb9300472c8303:0x4321b9c6e05b642d!2sTech+Jobs+(Dr+Reddy's+Foundation)!8m2!3d17.4947261!4d78.358775!9m1!1b1!16s%2Fg%2F11v_b54dkv!3m7!1s0x3bcb9300472c8303:0x4321b9c6e05b642d!8m2!3d17.4947261!4d78.358775!9m1!1b1!16s%2Fg%2F11v_b54dkv?entry=ttu&g_ep=EgoyMDI1MDcxNi4wIKXMDSoASAFQAw%3D%3D"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 text-grow-green hover:text-grow-green-light transition-colors"
+                            >
+                                <i data-lucide="star" class="w-4 h-4"></i>
+                                Google Reviews & Photos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Toast Container -->
+    <div id="toast-container"></div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Global variables
+        let currentSlide = 0;
+        const totalSlides = 3;
+
+        // Form data state
+        let formData = {
+            fullName: "",
+            email: "",
+            phone: "",
+            qualification: "",
+            yearOfPassing: "",
+            percentage: "",
+            collegeName: "",
+            location: ""
+        };
+
+        // Utility functions
+        function scrollToEnrollment() {
+            document.getElementById('enrollment-form').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function showToast(title, message, type = 'success') {
+            const toastContainer = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <div class="font-semibold">${title}</div>
+                <div class="text-sm text-muted">${message}</div>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            // Show toast
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            // Hide toast after 5 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toastContainer.removeChild(toast), 300);
+            }, 5000);
+        }
+
+        // Carousel functions
+        function updateCarousel() {
+            const carouselContent = document.getElementById('carousel-content');
+            const translateX = -currentSlide * 100;
+            carouselContent.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Auto-advance carousel
+        setInterval(nextSlide, 5000);
+
+        // Populate qualifications
+        function populateQualifications() {
+            const qualifications = [
+                "CSE",
+                "CSE (IT)", 
+                "CSE (AI & ML)",
+                "CSE (AI & DS)",
+                "CSE (DS)",
+                "B.Sc. (Data Science)"
+            ];
+
+            const grid = document.getElementById('qualifications-grid');
+            qualifications.forEach(qual => {
+                const div = document.createElement('div');
+                div.className = 'flex items-center gap-2 p-3 bg-accent/50 rounded-lg hover:bg-accent/70 transition-colors';
+                div.innerHTML = `
+                    <i data-lucide="check-circle" class="h-4 w-4 text-grow-green"></i>
+                    <span class="font-medium">${qual}</span>
+                `;
+                grid.appendChild(div);
+            });
+            
+            // Re-initialize icons for new elements
+            lucide.createIcons();
+        }
+
+        // Populate year options
+        function populateYearOptions() {
+            const yearSelect = document.getElementById('yearOfPassing');
+            const currentYear = new Date().getFullYear();
+            
+            for (let i = 0; i < 10; i++) {
+                const year = currentYear - i;
+                const option = document.createElement('option');
+                option.value = year.toString();
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+        }
+
+        // Form handling
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            // Get form data
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                qualification: document.getElementById('qualification').value,
+                yearOfPassing: document.getElementById('yearOfPassing').value,
+                percentage: document.getElementById('percentage').value,
+                collegeName: document.getElementById('collegeName').value,
+                location: document.getElementById('location').value
+            };
+
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                showToast(
+                    'Success!', 
+                    "Your enrollment has been submitted successfully. We'll contact you soon!",
+                    'success'
+                );
+                
+                // Reset form
+                document.getElementById('enrollment-form-element').reset();
+                
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Enrollment';
+            }, 2000);
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            populateQualifications();
+            populateYearOptions();
+            
+            // Add form submit listener
+            document.getElementById('enrollment-form-element').addEventListener('submit', handleSubmit);
+            
+            // Initialize carousel
+            updateCarousel();
+        });
+        function updateCarousel() {
+  track.style.transform = `translateX(-${index * 100}%)`;
+  updateIndicators();
+}
+
+    </script>
+</body>
+</html>
